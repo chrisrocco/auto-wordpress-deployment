@@ -1,13 +1,19 @@
 version: '3.3'
 
+networks:
+  default:
+    external:
+      name: nginx-net
+
 volumes:
-  db_data:
+  mysql_data:
 
 services:
+
   mysql:
     image: mysql:5.7
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
@@ -24,11 +30,6 @@ services:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      LETSENCRYPT_HOST:
-      LETSENCRYPT_EMAIL:
-      VIRTUAL_HOST:
-
-networks:
-  default:
-    external:
-      name: nginx-net
+      LETSENCRYPT_HOST: wordpress.chrisroc.co
+      LETSENCRYPT_EMAIL: chris.rocco7@gmail.com
+      VIRTUAL_HOST: wordpress.chrisroc.co

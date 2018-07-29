@@ -1,5 +1,10 @@
 version: '3.3'
 
+networks:
+  default:
+    external:
+      name: nginx-net
+
 volumes:
   html:
   vhost:
@@ -27,8 +32,3 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       NGINX_PROXY_CONTAINER: nginx-proxy
-
-networks:
-  default:
-    external:
-      name: nginx-net
