@@ -23,15 +23,14 @@ services:
 
   wordpress:
     image: wordpress:latest
-    ports:
-      - "8000:80"
     restart: unless-stopped
     volumes:
       - ./php.ini:/usr/local/etc/php/conf.d/wp.ini
+      - ./wp-html:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      LETSENCRYPT_HOST: wordpress.chrisroc.co
+      LETSENCRYPT_HOST: organickgym.com
       LETSENCRYPT_EMAIL: chris.rocco7@gmail.com
-      VIRTUAL_HOST: wordpress.chrisroc.co
+      VIRTUAL_HOST: organickgym.com
