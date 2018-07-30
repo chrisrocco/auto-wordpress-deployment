@@ -18,6 +18,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: somewordpress
       MYSQL_DATABASE: wordpress
+      # these should match environment in wordpress service
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wordpress
 
@@ -29,8 +30,10 @@ services:
       - ./wp-html:/var/www/html
     environment:
       WORDPRESS_DB_HOST: mysql:3306
+      # user and password should match environment in mysql service
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-      LETSENCRYPT_HOST: organickgym.com
-      LETSENCRYPT_EMAIL: chris.rocco7@gmail.com
-      VIRTUAL_HOST: organickgym.com
+      VIRTUAL_HOST: <your_domain_here>
+      LETSENCRYPT_HOST: <your_domain_here>
+      LETSENCRYPT_EMAIL: <your_email_here>
+      
