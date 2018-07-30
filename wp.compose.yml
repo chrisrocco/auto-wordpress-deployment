@@ -26,6 +26,8 @@ services:
     ports:
       - "8000:80"
     restart: unless-stopped
+    volumes:
+      - ./php.ini:/usr/local/etc/php/conf.d/wp.ini
     environment:
       WORDPRESS_DB_HOST: mysql:3306
       WORDPRESS_DB_USER: wordpress
